@@ -117,7 +117,7 @@ Si quieres probar la versión de producción sin pasar por la nube de EAS, puede
     ./gradlew assembleRelease
     ```
 
-4. **¡Encuentra tu APK!** Una vez que termine, tu APK firmada para producción estará en:
+4. **¡Encuentra tu APK!**  Una vez que termine, tu APK NO firmada para producción ósea de orígenes desconocidos estará en:
     `android/app/build/outputs/apk/release/app-release.apk`
 
 ¡Puedes instalar este archivo directamente en tu dispositivo!
