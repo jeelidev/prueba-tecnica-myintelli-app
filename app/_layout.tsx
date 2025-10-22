@@ -1,24 +1,42 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { PortalHost } from '@rn-primitives/portal';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import React from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import { AuthProvider, useAuth } from '../context/AuthContext';
+import "../styles/global.css";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+const RootLayoutNav = () => {
+    const { isLoading, session } = useAuth();
+
+
+    if (isLoading) {
+        return (
+            <View className="flex-1 justify-center items-center">
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+        );
+    }
+
+    return (
+        <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Protected guard={Boolean(session.token)}>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            </Stack.Protected>
+            <Stack.Protected guard={!Boolean(session.token)}>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="register" options={{ headerShown: false }} />
+            </Stack.Protected>
+        </Stack>
+    );
+}
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+    return (
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+        <AuthProvider>
+            <RootLayoutNav />
+            <PortalHost />
+        </AuthProvider>
+    );
 }
