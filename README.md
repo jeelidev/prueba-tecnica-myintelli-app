@@ -24,7 +24,7 @@ Para construir esta app, seleccioné un conjunto con el que estoy familiarizado 
 
 * **react-native-svg & expo-linear-gradient:** ¡Los Artistas como yo! Usamos estas librerías para replicar los diseños complejos como los `shape dividers` faciles en CSS de navegador, tambien aqui en movil y los fondos con gradientes que el CSS normal de React Native no puede manejar.
 
-## ¿Qué hace esta este circo? ✨
+## ¿Qué hace  este circo? ✨
 
 La aplicación tiene varios flujo interesante, desde el login hasta la visualización de datos de APIs.
 
@@ -55,7 +55,7 @@ La aplicación tiene varios flujo interesante, desde el login hasta la visualiza
   * Implementa un sistema de **paginación por páginas** (Anterior/Siguiente).
   * Al hacer clic en un personaje, navega a una **pantalla de detalles** de pantalla completa con su propia animación de transición y header nativo.
 
-## ¿Como la pruebas en local? 🏁
+## ¿Como corro las pruebas en local? 🏁
 
 ¿Para probarla en tu máquina? ¡Es simple!
 
